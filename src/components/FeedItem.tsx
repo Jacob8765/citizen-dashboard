@@ -120,7 +120,7 @@ export default function FeedItem({
 }: FeedItemProps) {
   return (
     <Link
-      href={`/feed/${id}`}
+      href={`/dashboard/post/${id}`}
       className={`flex flex-col gap-1 rounded-xl ${FEED_ITEM_TYPE_THEME[type].color} p-4 ${FEED_ITEM_TYPE_THEME[type].hoverColor}`}
     >
       <div className="flex flex-row items-center gap-2">

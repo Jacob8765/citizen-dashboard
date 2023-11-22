@@ -13,10 +13,20 @@ export default function Navbar() {
         <Link
           href="/dashboard"
           className={`mx-3 font-serif text-lg ${
-            pathname === "/dashboard" ? "font-bold" : ""
+            pathname === "/dashboard" || pathname.startsWith("/dashboard/post/")
+              ? "font-bold"
+              : ""
           }`}
         >
           Dashboard
+        </Link>
+        <Link
+          href="/dashboard/post"
+          className={`mx-3 font-serif text-lg ${
+            pathname === "/dashboard/post" ? "font-bold" : ""
+          }`}
+        >
+          My Posts
         </Link>
         <Link
           href="/dashboard/about"

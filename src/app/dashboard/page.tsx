@@ -1,5 +1,5 @@
-import type { FeedItemProps } from "../components/FeedItem";
-import FeedItem from "../components/FeedItem";
+import type { FeedItemProps } from "../../components/FeedItem";
+import FeedItem from "../../components/FeedItem";
 
 const DUMMY_FEED: FeedItemProps[] = [
   {
