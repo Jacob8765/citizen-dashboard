@@ -19,9 +19,9 @@ export default function Navbar() {
           Dashboard
         </Link>
         <Link
-          href="/about"
+          href="/dashboard/about"
           className={`mx-3 font-serif text-lg ${
-            pathname === "/about" ? "font-bold" : ""
+            pathname === "/dashboard/about" ? "font-bold" : ""
           }`}
         >
           About
