@@ -4,7 +4,7 @@ export default function AboutPage() {
       <h1 className="font-serif text-2xl font-extrabold text-black">
         About Citizen Dashboard
       </h1>
-      <p className="mt-2 font-serif text-lg font-normal">
+      <p className="mt-2 font-sans text-lg font-normal">
         Citizen Dashboard is a community project designed to keep Miami
         residents informed about the latest news and events in the city. A
         thriving democracy requires an informed citizenry, and Citizen Dashboard
