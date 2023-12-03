@@ -1,4 +1,7 @@
-import type { FeedItemProps } from "@/components/FeedItem";
+import Comments from "@/components/Comments/Comments";
+import type { FeedItem } from "@/types/feed";
+import { DUMMY_COMMENTS } from "@/constants/feed";
+import CommentBox from "@/components/Comments/CommentBox";
 
 export default function PostDetailsPage({
   params,
@@ -16,7 +19,14 @@ export default function PostDetailsPage({
 
       <div className="col-span-2 rounded-xl bg-white/20 p-4">
         <h2 className="font-serif text-2xl font-bold">Comments</h2>
-        <p className="mt-1 text-lg">Loading...</p>
+        <div className="flex-1">
+          <div className="flex-grow">
+            <Comments comments={DUMMY_COMMENTS} />
+          </div>
+          <div className="flex-shrink">
+            <CommentBox />
+          </div>
+        </div>
       </div>
     </main>
   );

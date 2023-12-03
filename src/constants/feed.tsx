@@ -1,14 +1,56 @@
-import Link from "next/link";
+import { Comment } from "@/types/comment";
+import { FeedItem } from "@/types/feed";
 
-export interface FeedItemProps {
-  type: "legislation" | "news" | "event" | "discussion" | "poll";
-  title: string;
-  description: string;
-  date: Date;
-  id: string;
-}
+export const DUMMY_FEED: FeedItem[] = [
+  {
+    type: "legislation",
+    title: "New Legislation Proposal",
+    description:
+      "A new legislation proposal regarding residential zoning and permitting has been introduced for public review.",
+    date: new Date("2023-11-22T10:30:00Z"),
+    id: "1",
+  },
+  {
+    type: "news",
+    title: "City Park Renovation Update",
+    description: "Updates on the Cutler Bay City Park Renovation project.",
+    date: new Date("2023-11-22T12:45:00Z"),
+    id: "2",
+  },
+  {
+    type: "event",
+    title: "Community Cleanup Day",
+    description:
+      "Join us for a community cleanup day on Saturday. Let's work together to keep our neighborhood clean!",
+    date: new Date("2023-11-23T09:00:00Z"),
+    id: "3",
+  },
+  {
+    type: "poll",
+    title: "Should we build a new library?",
+    description:
+      "The town recently recieved a grant for public development. Please vote if you think a portion of the funds should be used to build a new library.",
+    date: new Date("2023-11-20T09:43:00Z"),
+    id: "3",
+  },
+];
 
-const FEED_ITEM_TYPE_THEME = {
+export const DUMMY_COMMENTS: Comment[] = [
+  {
+    id: "1",
+    author: "John Doe",
+    date: new Date("2023-11-22T10:30:00Z"),
+    content: "This is a comment.",
+  },
+  {
+    id: "2",
+    author: "Jane Doe",
+    date: new Date("2023-11-22T10:30:00Z"),
+    content: "This is another comment.",
+  },
+];
+
+export const FEED_ITEM_TYPE_THEME = {
   legislation: {
     icon: (
       <svg
@@ -110,48 +152,3 @@ const FEED_ITEM_TYPE_THEME = {
     hoverColor: "hover:bg-red-200/40",
   },
 };
-
-export default function FeedItem({
-  type,
-  title,
-  description,
-  date,
-  id,
-}: FeedItemProps) {
-  return (
-    <Link
-      href={`/dashboard/post/${id}`}
-      className={`flex flex-col gap-1 rounded-xl ${FEED_ITEM_TYPE_THEME[type].color} p-4 ${FEED_ITEM_TYPE_THEME[type].hoverColor}`}
-    >
-      <div className="flex flex-row items-center gap-2">
-        <div className="flex-grow">
-          <div className="bg-te flex flex-row items-center gap-2">
-            <span className={`font-bold} text-xl`}>
-              {FEED_ITEM_TYPE_THEME[type].icon}
-            </span>
-            <span className="font-serif text-2xl font-bold">{title}</span>
-          </div>
-          <p className="text-md">{description}</p>
-          <p className="text-sm text-gray-400">
-            {date.toLocaleString("en-US")}
-          </p>
-        </div>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="h-8 w-8"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M8.25 4.5l7.5 7.5-7.5 7.5"
-          />
-        </svg>
-      </div>
-    </Link>
-  );
-}
