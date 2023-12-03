@@ -1,10 +1,10 @@
-export default function CommentBox() {
+export default function CommentBox({ placeholder }: { placeholder: string }) {
   return (
-    <div className="mt-3 flex flex-row items-center space-x-4">
+    <div className="flex flex-row items-center space-x-4">
       <div className="flex-grow">
         <input
           className="placeholder-font-serif w-full rounded-lg p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600"
-          placeholder="Add a comment..."
+          placeholder={placeholder}
         ></input>
       </div>
       <div className="flex min-w-[30px] flex-shrink items-center justify-end">
