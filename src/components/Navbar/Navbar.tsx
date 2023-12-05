@@ -12,7 +12,7 @@ export default async function Navbar({ currentUrl }: { currentUrl: string }) {
       <div className="ml-8 flex-grow">
         <Link
           href="/dashboard"
-          className={`mx-3 font-serif text-lg ${
+          className={`mx-3 text-lg ${
             currentUrl === "/dashboard" ||
             currentUrl.startsWith("/dashboard/post/")
               ? "font-bold"
@@ -23,7 +23,7 @@ export default async function Navbar({ currentUrl }: { currentUrl: string }) {
         </Link>
         <Link
           href="/dashboard/post"
-          className={`mx-3 font-serif text-lg ${
+          className={`mx-3 text-lg ${
             currentUrl === "/dashboard/post" ? "font-bold" : ""
           }`}
         >
@@ -31,7 +31,7 @@ export default async function Navbar({ currentUrl }: { currentUrl: string }) {
         </Link>
         <Link
           href="/dashboard/about"
-          className={`mx-3 font-serif text-lg ${
+          className={`mx-3text-lg ${
             currentUrl === "/dashboard/about" ? "font-bold" : ""
           }`}
         >
