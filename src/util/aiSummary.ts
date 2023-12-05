@@ -22,10 +22,16 @@ export const getAISummary = async (text: string): Promise<string> => {
 
   const documents = await splitter.createDocuments([text]);
 
-  const vectorStore = await MemoryVectorStore.fromDocuments(
+  const vectorStore = await HNSWLib.fromDocuments(
     documents,
     new OpenAIEmbeddings(),
   );
+
+  const randomId = Math.random().toString(36).substring(7);
+  const directory = `..//vectordumps/${randomId}`;
+
+  await vectorStore.save(directory);
+
   const retriever = vectorStore.asRetriever();
 
   const prompt =

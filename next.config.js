@@ -5,6 +5,12 @@
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
-const config = {};
+const config = {
+    webpack(config) {
+      config.experiments = { ...config.experiments, topLevelAwait: true };
+      config.externals = [...config.externals, 'hnswlib-node'];  // by adding this line, solved the import
+      return config;
+    },
+  };
 
-export default config;
+  export default config;
