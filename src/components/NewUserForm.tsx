@@ -25,7 +25,7 @@ export default function NewUserForm({
     <form onSubmit={handleSubmit(onFormSubmit)}>
       <div className="grid grid-cols-6 gap-4 p-4">
         <div className="col-span-4 space-y-4 rounded-xl bg-white/20 p-4">
-          <h2 className="font-serif text-2xl font-bold">User Infot</h2>
+          <h2 className="font-serif text-2xl font-bold">User Information</h2>
           <div className="grid grid-cols-2 gap-2">
             <Input id="email" label="Email" register={register} />
             <Input id="username" label="Username" register={register} />

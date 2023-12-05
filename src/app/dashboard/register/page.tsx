@@ -10,8 +10,10 @@ import { createPost } from "@/util/createPost";
 import { createUser } from "@/util/createUser";
 import { useState } from "react";
 import { Controller, useForm, Form, SubmitHandler } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 export default function NewPostPage() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit: SubmitHandler<NewUser> = async (data) => {
@@ -27,6 +29,7 @@ export default function NewPostPage() {
       });
       const json = await res.json();
       console.log(json);
+      router.push("/api/auth/signin");
 
       console.log(res);
     } catch (error) {

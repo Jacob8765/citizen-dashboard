@@ -3,8 +3,10 @@ import NewPostForm from "@/components/NewPostForm";
 import type { NewPost } from "@/types/newPost";
 import { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 export default function NewPostPage() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit: SubmitHandler<NewPost> = async (data) => {
@@ -20,6 +22,7 @@ export default function NewPostPage() {
       });
       const json = await res.json();
       console.log(json);
+      router.push("/dashboard");
     } catch (error) {
       console.error("Error processing new post:", error);
     } finally {
