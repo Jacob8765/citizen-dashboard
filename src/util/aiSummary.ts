@@ -12,7 +12,12 @@ import { TextLoader } from "langchain/document_loaders/fs/text";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 
-export const getAISummary = async (text: string): Promise<string> => {
+interface AISummaryResult {
+  result: string;
+  vectorId: string;
+}
+
+export const getAISummary = async (text: string): Promise<AISummaryResult> => {
   const model = new ChatOpenAI({});
 
   const splitter = new RecursiveCharacterTextSplitter({
@@ -28,9 +33,14 @@ export const getAISummary = async (text: string): Promise<string> => {
   );
 
   const randomId = Math.random().toString(36).substring(7);
-  const directory = `..//vectordumps/${randomId}`;
+  const directory = `/Users/jacob/Documents/citizen-dashboard/vectordumps/${randomId}`;
 
-  await vectorStore.save(directory);
+  try {
+    await vectorStore.save(directory);
+    console.log(`Saved vector store to ${directory}`);
+  } catch (error: any) {
+    console.error(`Failed to save vector store: ${error.message}`);
+  }
 
   const retriever = vectorStore.asRetriever();
 
@@ -54,5 +64,5 @@ export const getAISummary = async (text: string): Promise<string> => {
     "Write a 1-2 paragraph summary of the issue or legislation provided",
   );
 
-  return result;
+  return { result, vectorId: randomId };
 };

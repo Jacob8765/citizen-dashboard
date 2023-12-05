@@ -16,10 +16,11 @@ export async function POST(request: Request) {
     }
 
     //get the summary from langchain
-    const summary = await getAISummary(textContent);
+    const { result: summary, vectorId } = await getAISummary(textContent);
 
     return Response.json({
       summary: summary,
+      vectorId: vectorId,
       //   content: textContent,
       title: title,
       description: description,
