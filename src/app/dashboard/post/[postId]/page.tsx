@@ -8,6 +8,7 @@ import AISummary from "@/components/Feed/AISummary";
 import Sources from "@/components/Feed/Sources";
 import { useEffect, useState } from "react";
 import { Post } from "@prisma/client";
+import type { Comment } from "@/types/comment";
 
 export default function PostDetailsPage({
   params,
@@ -16,6 +17,20 @@ export default function PostDetailsPage({
 }) {
   const [isLoading, setIsLoading] = useState(true);
   const [post, setPost] = useState<Post | null>(null);
+  const [comments, setComments] = useState<Comment[]>([]);
+
+  const leaveComment = async (comment: string) => {
+    console.log("LEAVING COMMENT", comment);
+    setComments([
+      ...comments,
+      {
+        id: comments.length + 1,
+        content: comment,
+        date: new Date(),
+        author: "Jacob",
+      },
+    ]);
+  };
 
   const getPost = async () => {
     setIsLoading(true);
@@ -50,9 +65,12 @@ export default function PostDetailsPage({
         <div className="flex h-full flex-col">
           <div className="flex-grow">
             <h2 className="mb-3 font-serif text-2xl font-bold">Comments</h2>
-            <Comments comments={DUMMY_COMMENTS} />
+            <Comments comments={comments} />
           </div>
-          <CommentBox placeholder="Add a comment..." />
+          <CommentBox
+            placeholder="Add a comment..."
+            handleSubmit={leaveComment}
+          />
         </div>
       </div>
     </main>

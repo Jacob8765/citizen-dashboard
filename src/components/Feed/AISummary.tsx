@@ -25,7 +25,10 @@ export default function AISummary({ post }: { post: Post }) {
 
       <p className="text-md">{post.summary}</p>
 
-      <CommentBox placeholder="Ask a question..." />
+      <CommentBox
+        placeholder="Ask a question..."
+        handleSubmit={(comment: string) => console.log(comment)}
+      />
     </div>
   );
 }

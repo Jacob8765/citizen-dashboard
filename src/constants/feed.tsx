@@ -70,13 +70,13 @@ export const DUMMY_FEED: Post[] = [
 
 export const DUMMY_COMMENTS: Comment[] = [
   {
-    id: "1",
+    id: 1,
     author: "John Doe",
     date: new Date("2023-11-22T10:30:00Z"),
     content: "This is a comment.",
   },
   {
-    id: "2",
+    id: 2,
     author: "Jane Doe",
     date: new Date("2023-11-22T10:30:00Z"),
     content: "This is another comment.",
