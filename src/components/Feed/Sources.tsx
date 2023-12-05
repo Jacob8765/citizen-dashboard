@@ -1,7 +1,9 @@
 import { FeedItem } from "@/types/feed";
 import CommentBox from "../Comments/CommentBox";
+import { Post } from "@prisma/client";
+import { useEffect } from "react";
 
-export default function Sources({ post }: { post: FeedItem }) {
+export default function Sources({ post }: { post: Post }) {
   return (
     <div className="my-2 rounded-lg bg-white/40 p-3">
       <div className="mb-3 flex items-center justify-start space-x-3">
@@ -22,7 +24,14 @@ export default function Sources({ post }: { post: FeedItem }) {
         <p className="text-lg font-semibold">Original Sources</p>
       </div>
 
-      <p className="text-md">
+      {post.sources.map((source) => (
+        <p className="text-md">
+          <a href="#" className="text-blue-500">
+            {source}
+          </a>
+        </p>
+      ))}
+      {/* <p className="text-md">
         <a href="#" className="text-blue-500">
           https://townofcutlerbay.gov/legislation/1534rf346tf3433434233434
         </a>
@@ -31,7 +40,7 @@ export default function Sources({ post }: { post: FeedItem }) {
         <a href="#" className="text-blue-500">
           https://miamidadecounty.gov/news/2023/f2r3
         </a>
-      </p>
+      </p> */}
     </div>
   );
 }

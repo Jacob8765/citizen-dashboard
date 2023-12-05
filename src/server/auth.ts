@@ -64,11 +64,17 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const user = {
-          id: "1hjhhuh98",
-          username: credentials!.username,
-          email: "jschuster@gmail.com",
-        };
+        if (!credentials || !credentials.username || !credentials.password)
+          return null;
+
+        //we really should be hashing the password here
+        const user = await db.user.findFirst({
+          where: {
+            username: credentials.username,
+          },
+        });
+
+        if (!user) return null;
 
         return {
           id: user.id,

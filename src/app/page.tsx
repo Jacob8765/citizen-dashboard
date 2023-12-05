@@ -37,7 +37,7 @@ export default async function HomePage() {
               </Link>
               <Link
                 className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/20 p-4 text-black hover:bg-white/40"
-                href="/register"
+                href="/dashboard/register"
               >
                 <h3 className="text-2xl font-bold">Register →</h3>
                 <div className="text-lg">Get Informed</div>

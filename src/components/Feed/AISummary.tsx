@@ -1,7 +1,8 @@
 import { FeedItem } from "@/types/feed";
 import CommentBox from "../Comments/CommentBox";
+import { Post } from "@prisma/client";
 
-export default function AISummary({ post }: { post: FeedItem }) {
+export default function AISummary({ post }: { post: Post }) {
   return (
     <div className="my-2 space-y-3 rounded-lg bg-white/40 p-3">
       <div className="mb-3 flex items-center justify-start space-x-3">
@@ -22,12 +23,7 @@ export default function AISummary({ post }: { post: FeedItem }) {
         <p className="text-lg font-semibold">AI Summary</p>
       </div>
 
-      <p className="text-md">
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem
-        labore ab doloremque, quas delectus quia iste, ex sunt deserunt ad
-        perspiciatis expedita ratione aperiam rerum. Quisquam, voluptatum.
-        Quisquam, voluptatum. Quisquam, voluptatum."
-      </p>
+      <p className="text-md">{post.summary}</p>
 
       <CommentBox placeholder="Ask a question..." />
     </div>

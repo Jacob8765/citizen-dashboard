@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { FEED_ITEM_TYPE_THEME } from "@/constants/feed";
-import { FeedItem } from "@/types/feed";
+import { Post } from "@prisma/client";
 
 export default function FeedItemCard({
   type,
   title,
   description,
-  date,
+  createdAt,
   id,
-}: FeedItem) {
+}: Post) {
   return (
     <Link
       href={`/dashboard/post/${id}`}
@@ -24,7 +24,7 @@ export default function FeedItemCard({
           </div>
           <p className="text-md">{description}</p>
           <p className="text-sm text-gray-400">
-            {date.toLocaleString("en-US")}
+            {createdAt.toLocaleString("en-US")}
           </p>
         </div>
 

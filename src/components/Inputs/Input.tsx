@@ -4,9 +4,10 @@ interface InputProps {
   id: string;
   label: string;
   register: UseFormRegister<any>;
+  password?: boolean;
 }
 
-export default function Input({ id, label, register }: InputProps) {
+export default function Input({ id, label, register, password }: InputProps) {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor="input" className="text-sm">
@@ -21,7 +22,7 @@ export default function Input({ id, label, register }: InputProps) {
           focus:outline-none focus:ring-1
           focus:ring-gray-100 focus:ring-offset-0
         "
-        type="text"
+        type={password ? "password" : "text"}
       />
     </div>
   );

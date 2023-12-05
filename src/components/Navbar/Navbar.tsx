@@ -30,8 +30,16 @@ export default async function Navbar({ currentUrl }: { currentUrl: string }) {
           My Posts
         </Link>
         <Link
+          href="/dashboard/post/new"
+          className={`mx-3 text-lg ${
+            currentUrl === "/dashboard/post" ? "font-bold" : ""
+          }`}
+        >
+          Create Post
+        </Link>
+        <Link
           href="/dashboard/about"
-          className={`mx-3text-lg ${
+          className={`mx-3 text-lg ${
             currentUrl === "/dashboard/about" ? "font-bold" : ""
           }`}
         >
@@ -46,7 +54,7 @@ export default async function Navbar({ currentUrl }: { currentUrl: string }) {
               Sign In
             </button>
           </Link>
-          <Link href="/register" className="ml-2">
+          <Link href="/dashboard/register" className="ml-2">
             <button className="items-end rounded border border-black px-4 py-2 font-serif font-bold text-black hover:border-gray-800 hover:text-gray-800">
               Register
             </button>

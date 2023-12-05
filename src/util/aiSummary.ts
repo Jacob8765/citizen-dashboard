@@ -13,7 +13,7 @@ import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 
 interface AISummaryResult {
-  result: string;
+  summary: string;
   vectorId: string;
 }
 
@@ -60,9 +60,9 @@ export const getAISummary = async (text: string): Promise<AISummaryResult> => {
     new StringOutputParser(),
   ]);
 
-  const result = await chain.invoke(
+  const summary = await chain.invoke(
     "Write a 1-2 paragraph summary of the issue or legislation provided",
   );
 
-  return { result, vectorId: randomId };
+  return { summary, vectorId: randomId };
 };

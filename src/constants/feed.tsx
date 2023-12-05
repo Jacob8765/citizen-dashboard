@@ -1,37 +1,70 @@
 import { Comment } from "@/types/comment";
 import { FeedItem } from "@/types/feed";
+import { Post } from "@prisma/client";
 
-export const DUMMY_FEED: FeedItem[] = [
+export const DUMMY_FEED: Post[] = [
   {
     type: "legislation",
     title: "New Legislation Proposal",
     description:
       "A new legislation proposal regarding residential zoning and permitting has been introduced for public review.",
-    date: new Date("2023-11-22T10:30:00Z"),
-    id: "1",
+    createdAt: new Date("2023-11-22T10:30:00Z"),
+    vectorId: "1",
+    summary: "",
+    updatedAt: new Date("2023-11-22T10:30:00Z"),
+    createdById: "1",
+    sources: [
+      "https://townofcutlerbay.gov/legislation/1534rf346tf3433434233434",
+      "https://miamidadecounty.gov/news/2023/f2r3",
+    ],
+    id: 100,
   },
   {
     type: "news",
+    vectorId: "2",
+    summary: "",
+    createdAt: new Date("2023-11-22T10:30:00Z"),
+    createdById: "1",
+    updatedAt: new Date("2023-11-22T10:30:00Z"),
     title: "City Park Renovation Update",
     description: "Updates on the Cutler Bay City Park Renovation project.",
-    date: new Date("2023-11-22T12:45:00Z"),
-    id: "2",
+    id: 101,
+    sources: [
+      "https://townofcutlerbay.gov/legislation/1534rf346tf3433434233434",
+      "https://miamidadecounty.gov/news/2023/f2r3",
+    ],
   },
   {
     type: "event",
+    vectorId: "3",
+    summary: "",
+    createdAt: new Date("2023-11-22T10:30:00Z"),
+    createdById: "1",
+    updatedAt: new Date("2023-11-22T10:30:00Z"),
     title: "Community Cleanup Day",
     description:
       "Join us for a community cleanup day on Saturday. Let's work together to keep our neighborhood clean!",
-    date: new Date("2023-11-23T09:00:00Z"),
-    id: "3",
+    id: 102,
+    sources: [
+      "https://townofcutlerbay.gov/legislation/1534rf346tf3433434233434",
+      "https://miamidadecounty.gov/news/2023/f2r3",
+    ],
   },
   {
     type: "poll",
+    vectorId: "4",
+    summary: "",
+    createdAt: new Date("2023-11-22T10:30:00Z"),
+    createdById: "1",
+    updatedAt: new Date("2023-11-22T10:30:00Z"),
     title: "Should we build a new library?",
     description:
       "The town recently recieved a grant for public development. Please vote if you think a portion of the funds should be used to build a new library.",
-    date: new Date("2023-11-20T09:43:00Z"),
-    id: "3",
+    id: 103,
+    sources: [
+      "https://townofcutlerbay.gov/legislation/1534rf346tf3433434233434",
+      "https://miamidadecounty.gov/news/2023/f2r3",
+    ],
   },
 ];
 

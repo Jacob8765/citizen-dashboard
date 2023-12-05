@@ -1,3 +1,4 @@
+"use client";
 import Comments from "@/components/Comments/Comments";
 import type { FeedItem } from "@/types/feed";
 import { DUMMY_COMMENTS } from "@/constants/feed";
@@ -5,13 +6,35 @@ import { DUMMY_FEED } from "@/constants/feed";
 import CommentBox from "@/components/Comments/CommentBox";
 import AISummary from "@/components/Feed/AISummary";
 import Sources from "@/components/Feed/Sources";
+import { useEffect, useState } from "react";
+import { Post } from "@prisma/client";
 
 export default function PostDetailsPage({
   params,
 }: {
-  params: { postId: string };
+  params: { postId: number };
 }) {
-  const post = DUMMY_FEED.find((post) => post.id === params.postId);
+  const [isLoading, setIsLoading] = useState(true);
+  const [post, setPost] = useState<Post | null>(null);
+
+  const getPost = async () => {
+    setIsLoading(true);
+    const res = await fetch(
+      `http://localhost:3000/api/posts/?id=${params.postId}`,
+    );
+    const json = (await res.json()) as { post: Post };
+    const { post } = json;
+    setPost(post);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    getPost();
+  }, []);
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <main className="container mx-auto grid grid-cols-6 gap-4 p-4">
