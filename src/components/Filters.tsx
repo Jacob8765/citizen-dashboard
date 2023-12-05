@@ -38,9 +38,9 @@ const Checkbox = (props: CheckboxProps) => (
 export default function Filters() {
   return (
     <div className="space-y-1">
-      <Checkbox id="news" label="News / Legislation" />
-      <Checkbox id="events" label="Events" />
-      <Checkbox id="polls" label="Polls" />
+      <Checkbox id="news" label="News / Legislation" defaultChecked />
+      <Checkbox id="events" label="Events" defaultChecked />
+      <Checkbox id="polls" label="Polls" defaultChecked />
       <Checkbox id="announcements" label="Announcements" />
     </div>
   );
